@@ -1,3 +1,4 @@
+
 pipeline {
     agent any
 
@@ -7,16 +8,9 @@ pipeline {
             steps {
                 echo "Running Selenium Tests using pytest"
 
-                // Install Python dependencies
                 sh 'python3 -m pip install -r requirements.txt'
-
-                // Start Flask application in background
                 sh 'python3 app.py &'
-
-                // Wait for Flask application to start
                 sh 'sleep 5'
-
-                // Run Selenium tests
                 sh 'python3 -m pytest -v'
             }
         }
@@ -31,17 +25,17 @@ pipeline {
 
         stage('Docker Login') {
             steps {
-                  sh 'docker login -u shreyachundi -p Karthikeya@011'
-                }
+                sh 'docker login -u mahathinalagandla -p Mahathi@123'
             }
+        }
 
         stage('Push Docker Image to Docker Hub') {
             steps {
                 echo "Push Docker Image to Docker Hub"
 
-                sh "docker tag week12app:v1 shreyachundi/week8_docker:week12image"
+                sh "docker tag week12app:v1 mahathinalagandla/week12-app:v1"
 
-                sh "docker push shreyachundi/week8_docker:week12image"
+                sh "docker push mahathinalagandla/week12-app:v1"
             }
         }
 
@@ -50,7 +44,6 @@ pipeline {
                 echo "Deploying application to Kubernetes"
 
                 sh 'kubectl apply -f deployment.yaml --validate=false'
-
                 sh 'kubectl apply -f service.yaml'
             }
         }
