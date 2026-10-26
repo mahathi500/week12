@@ -21,8 +21,7 @@ spec:
     spec:
       containers:
         - name: week12app
-
-          image: shreyachundi/week8_docker:week12image
+          image: mahathinalagandla/week12-app:v1
 
           ports:
             - containerPort: 5003

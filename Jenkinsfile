@@ -8,10 +8,10 @@ pipeline {
             steps {
                 echo "Running Selenium Tests using pytest"
 
-                bat 'python3 -m pip install -r requirements.txt'
-                bat 'python3 app.py &'
+                bat 'python -m pip install -r requirements.txt'
+                bat 'python app.py &'
                 bat 'sleep 5'
-                bat 'python3 -m pytest -v'
+                bat 'python -m pytest -v'
             }
         }
 
