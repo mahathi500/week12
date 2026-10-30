@@ -28,13 +28,13 @@ pipeline {
             }
         }
 
-        stage('Pubat Docker Image to Docker Hub') {
+        stage('Push Docker Image to Docker Hub') {
             steps {
-                echo "Pubat Docker Image to Docker Hub"
+                echo "Pushing Docker Image to Docker Hub"
 
                 bat "docker tag week12app:v1 mahathinalagandla/week12-app:v1"
 
-                bat "docker pubat mahathinalagandla/week12-app:v1"
+                bat "docker push mahathinalagandla/week12-app:v1"
             }
         }
 
